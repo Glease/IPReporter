@@ -12,6 +12,9 @@
 !README.md
 !License.md
 
+# inclue travis
+!.travis.yml
+
 # inclde libs which don't have a maven repo
 !libs/
 
