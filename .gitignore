@@ -3,10 +3,13 @@
 
 # include important folders
 # need gradle 
-!gradle/scripts/
+!gradle/
 !build.gradle
 !build.properties
 !DOCS/
+
+# exclude gradle wrapper
+gradle/wrapper/
 
 # include markdowns
 !README.md
