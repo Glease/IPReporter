@@ -1,5 +1,7 @@
 package net.glease.mods.ipr;
 
+import com.google.common.base.Strings;
+
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
@@ -31,7 +33,7 @@ public class IPMessage implements IMessage {
 
 		@Override
 		public IMessage onMessage(IPMessage message, MessageContext ctx) {
-			IPReporter.ips.put(ctx.getServerHandler().playerEntity, message.ip);
+			IPReporter.ips.put(ctx.getServerHandler().playerEntity, Strings.nullToEmpty(message.ip));
 			return null;
 		}
 
