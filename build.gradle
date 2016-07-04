@@ -26,13 +26,8 @@ version = config.pjtstatus + "-" + config.version + "-" + config.build
 group = config.group + config.archivesBaseName
 archivesBaseName = config.archivesBaseName
 
-// If TeamCity is running this build, lets set the version info
-if (hasProperty("teamcity")) {
-    version = teamcity["build.number"]
-
-    // Fix for main branch being built
-    version = version.replaceAll("/", "-")
-}
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 minecraft {
     version = config.minecraft_version + "-" + config.forge_version
@@ -89,6 +84,13 @@ debugClient {
 	if (project.hasProperty('mcPassword')) {
 		args "--password=" + project.mcPassword
 	}
+}
+
+jar {
+	manifest {
+		attributes 'FMLCorePlugin' : config.fmlCorePlugin
+	}
+
 }
 
 task echoVersion << {
